@@ -24,7 +24,7 @@ chmod 600 "$SSHPATH/deploy_key"
 eval $(ssh-agent)
 ssh-add "$SSHPATH/deploy_key"
 
-ssh-keyscan -t rsa $HOST >> "$SSHPATH/known_hosts"
+#ssh-keyscan -t rsa $HOST >> "$SSHPATH/known_hosts"
 
 echo "$INPUT_COMMAND" > $HOME/shell.sh
 cat $HOME/shell.sh
