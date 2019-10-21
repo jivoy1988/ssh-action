@@ -48,7 +48,7 @@ echo '##[command]Run commands'
 
 if [ "$INPUT_PASS" = "" ]
 then
-  sh -c "ssh -A -i $SSHPATH/deploy_key -o StrictHostKeyChecking=no -p $INPUT_PORT ${INPUT_USER}@${INPUT_HOST} < $HOME/shell.sh"
+  sh -c "ssh -A -i $SSHPATH/deploy_key -o StrictHostKeyChecking=no -p $INPUT_PORT ${INPUT_USER}@${INPUT_HOST} /bin/sh < $HOME/shell.sh"
 else
-  sh -c "sshpass -A -p $INPUT_PASS ssh -o StrictHostKeyChecking=no -p $INPUT_PORT ${INPUT_USER}@${INPUT_HOST} < $HOME/shell.sh"
+  sh -c "sshpass -A -p $INPUT_PASS ssh -o StrictHostKeyChecking=no -p $INPUT_PORT ${INPUT_USER}@${INPUT_HOST} /bin/sh < $HOME/shell.sh"
 fi
