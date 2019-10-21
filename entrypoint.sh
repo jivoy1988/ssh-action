@@ -27,8 +27,6 @@ ssh-add "$SSHPATH/deploy_key"
 echo ""
 echo '##[command]Commands'
 
-echo '#!/bin/bash' >> $HOME/shell.sh
-
 echo 'echo ""' >> $HOME/shell.sh
 
 IFS='
