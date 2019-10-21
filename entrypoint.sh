@@ -26,7 +26,9 @@ eval $(ssh-agent)
 
 ssh-add "$SSHPATH/deploy_key"
 
-echo '' > $HOME/shell.sh
+echo 'env TERM=xterm-256color' > $HOME/shell.sh
+
+printf '\032[32mCommands\032[0m\n'
 
 IFS='
 '
@@ -45,11 +47,10 @@ do
     echo 'echo ""' >> $HOME/shell.sh
 done
 
-echo "\e[32mCommands"
+printf '\032[32mRun commands\032[0m\n'
 
-cat $HOME/shell.sh
 
-echo "\e[32mStart Run Commands"
+
 
 if [ "$INPUT_PASS" = "" ]
 then
