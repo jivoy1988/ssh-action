@@ -28,7 +28,7 @@ ssh-add "$SSHPATH/deploy_key"
 
 echo 'env TERM=xterm-256color' > $HOME/shell.sh
 
-printf '\032[32m Commands \n \032[0m\n'
+printf '\033[33m Commands \n \033[0m\n'
 
 IFS='
 '
