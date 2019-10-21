@@ -26,9 +26,8 @@ eval $(ssh-agent)
 
 ssh-add "$SSHPATH/deploy_key"
 
-echo 'env TERM=xterm-256color' > $HOME/shell.sh
-
-printf '\033[33m Commands \n \033[0m\n'
+echo ""
+echo '##[command]Commands'
 
 IFS='
 '
@@ -39,16 +38,16 @@ do
     echo $i >> $HOME/shell.sh
     echo 'END' >> $HOME/shell.sh
     echo ')' >> $HOME/shell.sh
-    echo 'echo "\e[34mRun command:"' >> $HOME/shell.sh
-    echo 'echo $COMMAND' >> $HOME/shell.sh
-    echo 'tput sgr0' >> $HOME/shell.sh
+    echo 'echo "##[command]RUN:"' >> $HOME/shell.sh
+    echo 'echo "##[command]"$COMMAND' >> $HOME/shell.sh
     echo 'echo ""' >> $HOME/shell.sh
     echo $i >> $HOME/shell.sh
     echo 'echo ""' >> $HOME/shell.sh
 done
 
-printf '\032[32mRun commands\032[0m\n'
-
+echo ""
+echo '##[command]Run commands'
+echo ""
 
 
 
