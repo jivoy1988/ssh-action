@@ -2,8 +2,6 @@
 
 set -eu
 
-printf '\033[33m Warning: This action does not currently support host verification; verification is disabled. \n \033[0m\n'
-
 SSHPATH="$HOME/.ssh"
 
 if [ ! -d "$SSHPATH" ]
@@ -29,6 +27,8 @@ ssh-add "$SSHPATH/deploy_key"
 echo ""
 echo '##[command]Commands'
 
+echo 'echo ""' >> $HOME/shell.sh
+
 IFS='
 '
 for i in $INPUT_COMMAND
@@ -38,18 +38,13 @@ do
     echo $i >> $HOME/shell.sh
     echo 'END' >> $HOME/shell.sh
     echo ')' >> $HOME/shell.sh
-    echo 'echo "##[command]RUN:"' >> $HOME/shell.sh
     echo 'echo "##[command]"$COMMAND' >> $HOME/shell.sh
-    echo 'echo ""' >> $HOME/shell.sh
     echo $i >> $HOME/shell.sh
     echo 'echo ""' >> $HOME/shell.sh
 done
 
 echo ""
 echo '##[command]Run commands'
-echo ""
-
-
 
 if [ "$INPUT_PASS" = "" ]
 then
